@@ -22,6 +22,7 @@
 			_mdl['name'] = Backbone.ModelNameGenerator (model);
 			_mdl['url'] = object[model]['list_endpoint'].slice(0,-1);
 			_mdl['container_name'] = Backbone.ModelNameGenerator (model)+"Container";
+    		_mdl['schema'] = object[model]['schema'];
 
 			window[_mdl['name']] = Backbone.Model.extend({
 				rootUrl: _mdl['url']
