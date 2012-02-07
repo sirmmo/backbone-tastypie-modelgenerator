@@ -7,4 +7,4 @@ Usage:
 
 Backbone.LoadModelsFromUrl("/api/v1/");
 
-From this moment on every resource defined inthe model is available as a windows.* element.
+From this moment on every resource defined in the API is available as a windows.* element.
