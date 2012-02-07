@@ -20,7 +20,7 @@
 		for (var model in object){
 			var _mdl = {};
 			_mdl['name'] = Backbone.ModelNameGenerator (model);
-			_mdl['url'] = object[model]['list_endpoint'].slice(0,object[model]['list_endpoint'].length - 1);
+			_mdl['url'] = object[model]['list_endpoint'].slice(0,-1);
 			_mdl['container_name'] = Backbone.ModelNameGenerator (model)+"Container";
 
 			window[_mdl['name']] = Backbone.Model.extend({
