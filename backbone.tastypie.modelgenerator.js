@@ -14,8 +14,6 @@
 		});
 	}
 
-
-	
 	Backbone.LoadModels = function(object, models){
 		for (var model in object){
 			var _mdl = {};
@@ -23,23 +21,27 @@
 			_mdl['url'] = object[model]['list_endpoint'].slice(0,-1);
 			_mdl['container_name'] = Backbone.ModelNameGenerator (model)+"Container";
     		_mdl['schema'] = object[model]['schema'];
-
-			window[_mdl['name']] = Backbone.Model.extend({
-				rootUrl: _mdl['url']
+            
+            _mdl['validator'] = {};
+            
+			
+			$.getJSON(_mdl['schema'] , function(data){
+				for (var field in data['fields']){
+					_mdl['validator'][field] = {};
+                    _mdl['validator'][field]['type'] = data['fields']['type'];
+                    if (data['fields']['blank'] == false)
+                        _mdl['validator'][field]['required'] = true;
+				}
+			});
+            
+            window[_mdl['name']] = Backbone.Model.extend({
+				urlRoot: _mdl['url'],
+                valdiate:_mdl['validator']
 			});
 			window[_mdl['container_name']] = Backbone.Collection.extend({
 				urlRoot: _mdl['url'], 
 				model: window[_mdl['name']]
 			});
-
-/*			_mdl['fields'] = {};
-			schema = object[model]['schema'];
-			$.getJSON(schema , function(data){
-				for (var field in schema['fields']){
-					if (object['fields'][field]['type'] == "string")
-						_mdl['fields'][field]['type'] = Backbone.Validators.String ;
-				}
-			});*/
 		}
 	}
 	
@@ -48,6 +50,11 @@
     	return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
+
+    Backbone.TPValidator = function(model, attrib_set){
+        var url = model.url();
+        
+    }
 
 	Backbone.Validators = {};
 
