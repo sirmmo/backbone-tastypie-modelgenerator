@@ -36,7 +36,7 @@
             
             window[_mdl['name']] = Backbone.Model.extend({
 				urlRoot: _mdl['url'],
-                valdiate:_mdl['validator']
+                validate:_mdl['validator']
 			});
 			window[_mdl['container_name']] = Backbone.Collection.extend({
 				urlRoot: _mdl['url'], 
