@@ -29,7 +29,7 @@
 			});
             
            	 window[_mdl['name']] = Backbone.Model.extend({
-				urlRoot: _mdl['url']//,
+				urlRoot: _mdl['url'],
 				url: function() {
 				    var original_url = Backbone.Model.prototype.url.call( this );
 				    var parsed_url = original_url + ( original_url.charAt( original_url.length - 1 ) == '/' ? '' : '/' );
