@@ -12,3 +12,7 @@ Usage:
 Backbone.LoadModelsFromUrl("/api/v1/");
 
 From this moment on every resource defined in the API is available as a windows.* element. 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sirmmo/backbone-tastypie-modelgenerator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
